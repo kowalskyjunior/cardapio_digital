@@ -538,3 +538,27 @@ body.product-modal-open{overflow:hidden!important;position:fixed;width:100%;heig
     word-break:normal!important;
   }
 }
+
+/* checkout CTA: keep the action inside the checkout flow instead of floating */
+.modal-bottom .checkout-actions,
+.modal-bottom .checkout-actions .primary-button{
+  position:static!important;
+}
+.modal-bottom .checkout-actions{
+  display:grid!important;
+  margin:18px 0 0!important;
+  padding:14px 0 calc(2px + env(safe-area-inset-bottom))!important;
+  background:var(--surface)!important;
+  box-shadow:none!important;
+  border-top:1px solid var(--border);
+  z-index:auto!important;
+}
+.modal-bottom .checkout-actions .primary-button{
+  width:100%;
+}
+
+/* restaurant logo: use the saved branding in the actual public identity */
+.brand-mark{overflow:hidden}
+.brand-mark img{width:100%;height:100%;display:block;object-fit:cover;border-radius:inherit}
+.brand-avatar{overflow:hidden}
+.brand-avatar img{width:100%;height:100%;display:block;object-fit:cover;border-radius:inherit}
