@@ -162,3 +162,23 @@ Cards usam imagens lazy-loaded, o shell inicial é pequeno e o service worker fa
 - 8 adicionais
 - 12 mesas
 - 1 cupom de exemplo
+
+## 12. Direção visual
+
+A experiência pública foi redesenhada tendo como referência padrões atuais de cardápio digital para restaurantes, incluindo vitrine de destaques, busca fixa, categorias horizontais, histórico de recompra e recomendações no carrinho. A referência principal de produto foi o Cardápio Digital da Anota AI, que hoje destaca QR Code, pedidos direto pelo WhatsApp, pagamento online, selos alimentares, recompra e sugestões/upsell. citeturn547966search0turn547966search1
+
+A implementação não replica a identidade visual da referência. O objetivo é usar a mesma lógica de produto, com uma linguagem própria e uma camada de personalização para cada restaurante.
+
+### Personalização pelo cliente
+
+O painel agora permite configurar sem editar código:
+
+- nome e descrição do restaurante;
+- logo e imagem de capa;
+- cor principal e fonte;
+- estilo da capa: foto, compacta ou bloco de cor;
+- densidade dos cards: compacto ou espaçado;
+- arredondamento dos botões;
+- exibição de selos, destaques e seção “Peça novamente”.
+
+As preferências são armazenadas junto às configurações do restaurante e aplicadas automaticamente no cardápio público.
