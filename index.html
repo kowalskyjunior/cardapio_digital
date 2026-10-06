@@ -39,10 +39,11 @@
 
 <main>
 <section class="search-wrap" aria-label="Busca">
-<label class="search-field"><span class="sr-only">Buscar no cardápio</span><span class="search-icon" id="searchIcon" aria-hidden="true"></span><input id="searchInput" type="search" autocomplete="off" placeholder="Buscar item..."><button id="clearSearch" class="clear-search" type="button" aria-label="Limpar busca" hidden>×</button></label>
+<label class="search-field"><span class="sr-only">Buscar no cardápio</span><span class="search-icon" id="searchIcon" aria-hidden="true"></span><input id="searchInput" type="search" autocomplete="off" placeholder="O que você está com vontade de comer?"><button id="clearSearch" class="clear-search" type="button" aria-label="Limpar busca" hidden>×</button></label>
 </section>
 
 <nav id="categoryNav" class="category-nav" aria-label="Categorias"></nav>
+<div id="filterNav" class="filter-nav" aria-label="Filtros do cardápio"></div>
 
 <section id="featuredSection" class="discover-section" hidden aria-labelledby="featuredTitle">
 <div class="discover-head"><div><p class="eyebrow">Destaques</p><h2 id="featuredTitle">Os mais pedidos</h2></div><span class="discover-note">Escolhas da casa</span></div>
@@ -58,9 +59,10 @@
 <section id="menuSections" class="menu-sections" hidden></section>
 <section id="emptyState" class="state-card" hidden><div class="state-icon" aria-hidden="true">⌕</div><h2>Nenhum item encontrado</h2><p class="muted">Tente buscar por outro nome ou escolha outra categoria.</p></section>
 </main>
+<section id="visitSection" class="visit-section" hidden aria-labelledby="visitTitle"><div class="visit-inner"><div><p class="eyebrow">Visite o restaurante</p><h2 id="visitTitle">Onde estamos</h2><p id="visitAddress" class="visit-address"></p><p id="visitHours" class="muted visit-hours"></p></div><div class="visit-actions"><a id="mapButton" class="primary-button" href="#" target="_blank" rel="noopener">Como chegar</a><a id="whatsappButton" class="outline-button" href="#" target="_blank" rel="noopener">WhatsApp</a></div></div></section>
 <footer class="menu-footer"><a href="admin.html" class="admin-access">Área do restaurante</a></footer>
 
-<button id="cartBar" class="cart-bar" type="button" aria-label="Abrir carrinho"><span class="cart-bar-left"><span class="count-badge" id="cartCount">0</span><span>Carrinho</span></span><strong id="cartTotal">R$ 0,00</strong></button>
+<button id="cartBar" class="cart-bar" type="button" aria-label="Abrir carrinho"><span class="cart-bar-left"><span class="count-badge" id="cartCount">0</span><span>Ver meu pedido</span></span><strong id="cartTotal">R$ 0,00</strong></button>
 </div>
 
 <dialog id="productDialog" class="modal">
@@ -93,7 +95,7 @@
 <label id="addressField" class="field-label" hidden><span>Endereço</span><textarea id="customerAddress" rows="2" maxlength="220" placeholder="Rua, número, bairro e referência"></textarea></label>
 <label class="field-label"><span>Cupom</span><div class="coupon-row"><input id="couponInput" maxlength="30" placeholder="Ex.: BEMVINDO10"><button id="applyCouponButton" class="outline-button" type="button">Aplicar</button></div><small id="couponMessage" class="field-help" aria-live="polite"></small></label>
 <div class="checkout-summary"><div><span>Subtotal</span><strong id="checkoutSubtotal">R$ 0,00</strong></div><div><span>Desconto</span><strong id="checkoutDiscount">R$ 0,00</strong></div><div class="checkout-grand"><span>Total</span><strong id="checkoutTotal">R$ 0,00</strong></div></div>
-<button class="primary-button full" id="sendOrderButton" type="submit">Enviar pedido pelo WhatsApp</button><button class="checkout-cancel" id="closeCartBottom" type="button">Continuar escolhendo itens</button><p class="microcopy">Seu pedido será salvo neste dispositivo e aberto no WhatsApp do restaurante.</p>
+<div class="checkout-actions"><button class="primary-button full" id="sendOrderButton" type="submit">Confirmar pedido · <span id="checkoutButtonTotal">R$ 0,00</span></button><button class="checkout-cancel" id="closeCartBottom" type="button">Voltar ao cardápio</button></div><p class="microcopy">Seu pedido será salvo neste dispositivo e aberto no WhatsApp do restaurante.</p>
 </form>
 </div>
 </dialog>
