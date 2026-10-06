@@ -78,7 +78,7 @@
 
 <dialog id="cartDialog" class="modal modal-bottom">
 <div class="modal-card cart-modal">
-<div class="cart-head"><div><p class="eyebrow">Seu pedido</p><h2>Carrinho</h2></div><button class="modal-close" data-close="cartDialog" type="button" aria-label="Fechar">×</button></div>
+<div class="cart-head"><div><p class="eyebrow">Seu pedido</p><h2>Carrinho</h2></div><button class="modal-close" id="closeCartTop" data-close="cartDialog" data-close="cartDialog" type="button" aria-label="Fechar">×</button></div>
 <div id="cartItems" class="cart-items"></div>
 <section class="cart-upsell" id="cartUpsell" hidden><div class="discover-head"><div><p class="eyebrow">Aproveite</p><h3>Peça também</h3></div></div><div id="cartRecommendations" class="cart-recommendations"></div></section>
 <div id="cartEmpty" class="state-card compact" hidden><div class="state-icon">🛒</div><h3>Seu carrinho está vazio</h3><p class="muted">Adicione um item para começar.</p></div>
@@ -92,12 +92,12 @@
 <label id="addressField" class="field-label" hidden><span>Endereço</span><textarea id="customerAddress" rows="2" maxlength="220" placeholder="Rua, número, bairro e referência"></textarea></label>
 <label class="field-label"><span>Cupom</span><div class="coupon-row"><input id="couponInput" maxlength="30" placeholder="Ex.: BEMVINDO10"><button id="applyCouponButton" class="outline-button" type="button">Aplicar</button></div><small id="couponMessage" class="field-help" aria-live="polite"></small></label>
 <div class="checkout-summary"><div><span>Subtotal</span><strong id="checkoutSubtotal">R$ 0,00</strong></div><div><span>Desconto</span><strong id="checkoutDiscount">R$ 0,00</strong></div><div class="checkout-grand"><span>Total</span><strong id="checkoutTotal">R$ 0,00</strong></div></div>
-<button class="primary-button full" id="sendOrderButton" type="submit">Enviar pedido pelo WhatsApp</button><p class="microcopy">Seu pedido será salvo neste dispositivo e aberto no WhatsApp do restaurante.</p>
+<button class="primary-button full" id="sendOrderButton" type="submit">Enviar pedido pelo WhatsApp</button><button class="checkout-cancel" id="closeCartBottom" type="button">Continuar escolhendo itens</button><p class="microcopy">Seu pedido será salvo neste dispositivo e aberto no WhatsApp do restaurante.</p>
 </form>
 </div>
 </dialog>
 
-<dialog id="tableDialog" class="modal"><div class="modal-card simple-modal"><div class="cart-head"><div><p class="eyebrow">Identificação</p><h2>Onde você está?</h2></div></div><p class="muted">Escolha sua mesa para manter o pedido identificado durante toda a navegação.</p><div id="tableChoices" class="table-choice-grid"></div><button class="primary-button full" id="continueWithoutTable" type="button">Continuar sem mesa</button></div></dialog>
+<dialog id="tableDialog" class="modal"><div class="modal-card simple-modal"><button class="modal-close" id="closeTableTop" data-close="tableDialog" type="button" aria-label="Fechar">×</button><div class="cart-head"><div><p class="eyebrow">Identificação</p><h2>Onde você está?</h2></div></div><p class="muted">Escolha sua mesa para manter o pedido identificado durante toda a navegação.</p><div id="tableChoices" class="table-choice-grid"></div><button class="primary-button full" id="continueWithoutTable" type="button">Continuar sem mesa</button></div></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script src="js/data.js"></script><script src="js/utils.js"></script><script src="js/i18n.js"></script><script src="js/cart.js"></script><script src="js/menu.js"></script>
 </body>
