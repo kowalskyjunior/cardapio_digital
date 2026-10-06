@@ -94,18 +94,47 @@
 <button id="cartBar" class="cart-bar" type="button" aria-label="Abrir carrinho"><span class="cart-bar-left"><span class="count-badge" id="cartCount">0</span><span>Ver meu pedido</span></span><strong id="cartTotal">R$ 0,00</strong></button>
 </div>
 
-<dialog id="productDialog" class="modal">
-<div class="modal-card product-modal">
-<button class="modal-close" data-close="productDialog" type="button" aria-label="Fechar">×</button>
-<div class="modal-media"><img id="productModalImage" alt="" loading="lazy"></div>
-<div class="modal-body">
-<div class="modal-kicker"><span id="productModalCategory" class="tag"></span></div>
-<h2 id="productModalName"></h2><p id="productModalDescription" class="muted"></p><strong id="productModalPrice" class="modal-price"></strong>
-<div id="addonGroups" class="addon-groups"></div>
-<label class="field-label"><span>Observações</span><textarea id="productNotes" rows="3" maxlength="240" placeholder="Ex.: sem cebola, ponto da carne..."></textarea></label>
-<div class="modal-footer"><div class="quantity-control"><button id="modalMinus" type="button" aria-label="Diminuir">−</button><output id="modalQuantity">1</output><button id="modalPlus" type="button" aria-label="Aumentar">+</button></div><button id="addToCartButton" class="primary-button" type="button">Adicionar • <span id="modalAddTotal">R$ 0,00</span></button></div>
-</div>
-</div>
+<dialog id="productDialog" class="modal product-dialog">
+  <div class="modal-card product-detail-modal">
+    <div class="product-detail-media">
+      <img id="productModalImage" alt="" loading="lazy">
+      <button class="product-detail-back modal-close" data-close="productDialog" type="button" aria-label="Voltar ao cardápio">‹</button>
+      <span id="productModalCategory" class="product-detail-tag"></span>
+    </div>
+
+    <div class="product-detail-scroll">
+      <section class="product-detail-intro">
+        <div class="product-detail-title-row">
+          <div>
+            <h2 id="productModalName"></h2>
+            <p id="productModalDescription" class="muted"></p>
+          </div>
+          <strong id="productModalPrice" class="product-detail-price"></strong>
+        </div>
+      </section>
+
+      <section id="addonGroups" class="product-detail-options"></section>
+
+      <section class="product-detail-section">
+        <div class="product-detail-section-head">
+          <h3>Alguma observação?</h3>
+          <span>Opcional</span>
+        </div>
+        <textarea id="productNotes" rows="3" maxlength="240" placeholder="Ex.: sem cebola, ponto da carne..."></textarea>
+      </section>
+    </div>
+
+    <div class="product-detail-footer">
+      <div class="product-detail-quantity quantity-control">
+        <button id="modalMinus" type="button" aria-label="Diminuir quantidade">−</button>
+        <output id="modalQuantity">1</output>
+        <button id="modalPlus" type="button" aria-label="Aumentar quantidade">+</button>
+      </div>
+      <button id="addToCartButton" class="primary-button product-detail-add" type="button">
+        Adicionar <span id="modalAddTotal">R$ 0,00</span>
+      </button>
+    </div>
+  </div>
 </dialog>
 
 <dialog id="cartDialog" class="modal modal-bottom">
