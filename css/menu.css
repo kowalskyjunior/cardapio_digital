@@ -136,3 +136,18 @@
   .featured-content h3{font-size:14px}
   .menu-section{margin-bottom:24px}
 }
+
+/* final mobile spacing correction */
+.brand-hero{min-height:250px}
+.brand-hero-inner{min-height:250px;padding-top:24px}
+.brand-cover{height:150px}
+.category-nav{scroll-padding-inline:4px;scroll-snap-type:x proximity;padding-left:6px;padding-right:6px}
+.category-chip{scroll-snap-align:start}
+@media(min-width:680px){.brand-hero,.brand-hero-inner{min-height:285px}.brand-cover{height:175px}}
+@media(max-width:560px){
+  .search-wrap{top:64px}
+  .category-nav{top:122px;margin-left:0;margin-right:0;padding-left:4px;padding-right:4px}
+  .brand-hero{min-height:238px}
+  .brand-hero-inner{min-height:238px}
+  .brand-cover{height:138px}
+}
