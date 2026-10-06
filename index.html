@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#E65F3A">
-<meta name="description" content="Cardápio digital do restaurante. Acesse por NFC ou QR Code.">
+<meta name="description" content="Cardápio digital personalizado.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,28 +15,51 @@
 <title>Cardápio Digital</title>
 </head>
 <body>
-<div class="app-shell">
-<header class="topbar">
-  <div class="brand-lockup">
+<div class="app-shell menu-app">
+<header class="topbar menu-topbar">
+  <a class="brand-lockup" href="#" aria-label="Início do cardápio">
     <div class="brand-mark" id="brandMark" aria-hidden="true">C</div>
     <div class="brand-copy"><strong id="restaurantName">Cardápio</strong><span id="restaurantStatus" class="status-badge">Aberto</span></div>
-  </div>
+  </a>
   <div class="header-actions"><span id="tableBadge" class="table-badge">Mesa —</span><button class="icon-button" id="themeToggle" type="button" aria-label="Alternar tema"></button></div>
 </header>
+
+<section class="brand-hero" id="brandHero" aria-labelledby="menuTitle">
+  <div class="brand-cover" id="brandCover"></div>
+  <div class="brand-hero-inner">
+    <div class="brand-avatar" id="brandAvatar">C</div>
+    <div class="brand-identity">
+      <div class="brand-status-row"><span class="hero-status" id="heroStatus">Aberto agora</span><span class="hero-table" id="heroTable">Mesa —</span></div>
+      <h1 id="menuTitle">Peça do seu jeito.</h1>
+      <p id="menuSubtitle" class="muted">Escolha seus favoritos e peça em poucos toques.</p>
+    </div>
+    <button class="hero-action" id="changeTableButton" type="button">Trocar mesa</button>
+  </div>
+</section>
+
 <main>
-<section class="hero" aria-labelledby="menuTitle">
-  <div><p class="eyebrow" data-i18n="welcomeEyebrow">Bem-vindo</p><h1 id="menuTitle">Peça do seu jeito.</h1><p id="menuSubtitle" class="muted" data-i18n="welcomeSubtitle">Escolha seus favoritos e envie o pedido pelo WhatsApp.</p></div>
-  <button class="outline-button" id="changeTableButton" type="button">Trocar mesa</button>
-</section>
 <section class="search-wrap" aria-label="Busca">
-<label class="search-field"><span class="sr-only" data-i18n="searchLabel">Buscar no cardápio</span><span class="search-icon" aria-hidden="true" id="searchIcon"></span><input id="searchInput" type="search" autocomplete="off" placeholder="Buscar item..." data-i18n-placeholder="searchPlaceholder"><button id="clearSearch" class="clear-search" type="button" aria-label="Limpar busca" hidden>×</button></label>
+<label class="search-field"><span class="sr-only">Buscar no cardápio</span><span class="search-icon" id="searchIcon" aria-hidden="true"></span><input id="searchInput" type="search" autocomplete="off" placeholder="Buscar item..."><button id="clearSearch" class="clear-search" type="button" aria-label="Limpar busca" hidden>×</button></label>
 </section>
+
 <nav id="categoryNav" class="category-nav" aria-label="Categorias"></nav>
+
+<section id="featuredSection" class="discover-section" hidden aria-labelledby="featuredTitle">
+<div class="discover-head"><div><p class="eyebrow">Destaques</p><h2 id="featuredTitle">Os mais pedidos</h2></div><span class="discover-note">Escolhas da casa</span></div>
+<div id="featuredGrid" class="featured-scroller"></div>
+</section>
+
+<section id="repeatSection" class="discover-section" hidden aria-labelledby="repeatTitle">
+<div class="discover-head"><div><p class="eyebrow">Para você</p><h2 id="repeatTitle">Peça novamente</h2></div><span class="discover-note">Seus últimos pedidos</span></div>
+<div id="repeatGrid" class="repeat-scroller"></div>
+</section>
+
 <div id="loadingState" class="product-grid skeleton-grid" aria-hidden="true"></div>
 <section id="menuSections" class="menu-sections" hidden></section>
 <section id="emptyState" class="state-card" hidden><div class="state-icon" aria-hidden="true">⌕</div><h2>Nenhum item encontrado</h2><p class="muted">Tente buscar por outro nome ou escolha outra categoria.</p></section>
 </main>
-<button id="cartBar" class="cart-bar" type="button" aria-label="Abrir carrinho"><span class="cart-bar-left"><span id="cartCount" class="count-badge">0</span><span data-i18n="cart">Carrinho</span></span><strong id="cartTotal">R$ 0,00</strong></button>
+
+<button id="cartBar" class="cart-bar" type="button" aria-label="Abrir carrinho"><span class="cart-bar-left"><span class="count-badge" id="cartCount">0</span><span>Carrinho</span></span><strong id="cartTotal">R$ 0,00</strong></button>
 </div>
 
 <dialog id="productDialog" class="modal">
@@ -44,10 +67,11 @@
 <button class="modal-close" data-close="productDialog" type="button" aria-label="Fechar">×</button>
 <div class="modal-media"><img id="productModalImage" alt="" loading="lazy"></div>
 <div class="modal-body">
-<span id="productModalCategory" class="tag"></span><h2 id="productModalName"></h2><p id="productModalDescription" class="muted"></p><strong id="productModalPrice" class="modal-price"></strong>
+<div class="modal-kicker"><span id="productModalCategory" class="tag"></span></div>
+<h2 id="productModalName"></h2><p id="productModalDescription" class="muted"></p><strong id="productModalPrice" class="modal-price"></strong>
 <div id="addonGroups" class="addon-groups"></div>
 <label class="field-label"><span>Observações</span><textarea id="productNotes" rows="3" maxlength="240" placeholder="Ex.: sem cebola, ponto da carne..."></textarea></label>
-<div class="modal-footer"><div class="quantity-control" aria-label="Quantidade"><button id="modalMinus" type="button" aria-label="Diminuir">−</button><output id="modalQuantity">1</output><button id="modalPlus" type="button" aria-label="Aumentar">+</button></div><button id="addToCartButton" class="primary-button" type="button">Adicionar • <span id="modalAddTotal">R$ 0,00</span></button></div>
+<div class="modal-footer"><div class="quantity-control"><button id="modalMinus" type="button" aria-label="Diminuir">−</button><output id="modalQuantity">1</output><button id="modalPlus" type="button" aria-label="Aumentar">+</button></div><button id="addToCartButton" class="primary-button" type="button">Adicionar • <span id="modalAddTotal">R$ 0,00</span></button></div>
 </div>
 </div>
 </dialog>
@@ -56,7 +80,8 @@
 <div class="modal-card cart-modal">
 <div class="cart-head"><div><p class="eyebrow">Seu pedido</p><h2>Carrinho</h2></div><button class="modal-close" data-close="cartDialog" type="button" aria-label="Fechar">×</button></div>
 <div id="cartItems" class="cart-items"></div>
-<div id="cartEmpty" class="state-card compact" hidden><div class="state-icon" aria-hidden="true">🛒</div><h3>Seu carrinho está vazio</h3><p class="muted">Adicione um item para começar.</p></div>
+<section class="cart-upsell" id="cartUpsell" hidden><div class="discover-head"><div><p class="eyebrow">Aproveite</p><h3>Peça também</h3></div></div><div id="cartRecommendations" class="cart-recommendations"></div></section>
+<div id="cartEmpty" class="state-card compact" hidden><div class="state-icon">🛒</div><h3>Seu carrinho está vazio</h3><p class="muted">Adicione um item para começar.</p></div>
 <form id="checkoutForm" class="checkout-form" novalidate>
 <div class="form-grid two"><label class="field-label"><span>Nome</span><input id="customerName" required maxlength="80" autocomplete="name" placeholder="Como podemos chamar você?"></label><label class="field-label"><span>Contato</span><input id="customerPhone" maxlength="20" autocomplete="tel" placeholder="(opcional)"></label></div>
 <fieldset class="order-type-field"><legend>Tipo de pedido</legend><div class="choice-grid">
@@ -67,19 +92,13 @@
 <label id="addressField" class="field-label" hidden><span>Endereço</span><textarea id="customerAddress" rows="2" maxlength="220" placeholder="Rua, número, bairro e referência"></textarea></label>
 <label class="field-label"><span>Cupom</span><div class="coupon-row"><input id="couponInput" maxlength="30" placeholder="Ex.: BEMVINDO10"><button id="applyCouponButton" class="outline-button" type="button">Aplicar</button></div><small id="couponMessage" class="field-help" aria-live="polite"></small></label>
 <div class="checkout-summary"><div><span>Subtotal</span><strong id="checkoutSubtotal">R$ 0,00</strong></div><div><span>Desconto</span><strong id="checkoutDiscount">R$ 0,00</strong></div><div class="checkout-grand"><span>Total</span><strong id="checkoutTotal">R$ 0,00</strong></div></div>
-<button class="primary-button full" id="sendOrderButton" type="submit">Enviar pedido pelo WhatsApp</button><p class="microcopy">Ao enviar, o pedido será registrado neste dispositivo e aberto no WhatsApp do restaurante.</p>
+<button class="primary-button full" id="sendOrderButton" type="submit">Enviar pedido pelo WhatsApp</button><p class="microcopy">Seu pedido será salvo neste dispositivo e aberto no WhatsApp do restaurante.</p>
 </form>
 </div>
 </dialog>
 
-<dialog id="tableDialog" class="modal">
-<div class="modal-card simple-modal"><div class="cart-head"><div><p class="eyebrow">Identificação</p><h2>Onde você está?</h2></div></div><p class="muted">O link desta mesa não foi identificado. Escolha a mesa ou o tipo de pedido para continuar.</p><div id="tableChoices" class="table-choice-grid"></div><button class="primary-button full" id="continueWithoutTable" type="button">Continuar sem mesa</button></div>
-</dialog>
+<dialog id="tableDialog" class="modal"><div class="modal-card simple-modal"><div class="cart-head"><div><p class="eyebrow">Identificação</p><h2>Onde você está?</h2></div></div><p class="muted">Escolha sua mesa para manter o pedido identificado durante toda a navegação.</p><div id="tableChoices" class="table-choice-grid"></div><button class="primary-button full" id="continueWithoutTable" type="button">Continuar sem mesa</button></div></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script src="js/data.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/menu.js"></script>
+<script src="js/data.js"></script><script src="js/utils.js"></script><script src="js/i18n.js"></script><script src="js/cart.js"></script><script src="js/menu.js"></script>
 </body>
 </html>
