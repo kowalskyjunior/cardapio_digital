@@ -151,3 +151,6 @@
   .brand-hero-inner{min-height:238px}
   .brand-cover{height:138px}
 }
+
+/* native hidden must always win over component display rules */
+[hidden]{display:none!important}
