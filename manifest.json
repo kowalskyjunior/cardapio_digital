@@ -1,0 +1,11 @@
+{
+  "name":"Cardápio Digital",
+  "short_name":"Cardápio",
+  "start_url":"./index.html",
+  "display":"standalone",
+  "background_color":"#F7F7F5",
+  "theme_color":"#E65F3A",
+  "lang":"pt-BR",
+  "description":"Cardápio digital com NFC, QR Code, carrinho e pedidos por WhatsApp.",
+  "icons":[{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
