@@ -76,3 +76,22 @@
 .tracking-order-card{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px;background:var(--surface-2);border-radius:14px;margin-bottom:12px}.tracking-order-card div{display:grid;gap:3px}.tracking-order-card span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:800}.tracking-order-card strong{font-size:12px}
 .order-tracking .outline-button{min-height:42px}
 @media(max-width:680px){.order-tracking{width:calc(100% - 24px);padding:15px;margin-top:12px}.tracking-head{gap:8px}.tracking-head h2{font-size:18px}.tracking-progress{grid-template-columns:repeat(5,minmax(58px,1fr));overflow-x:auto;padding-bottom:4px}.tracking-line{left:29px;right:29px;min-width:calc(100% - 58px)}.tracking-step{min-width:58px}.tracking-step small{display:none}.tracking-order-card{grid-template-columns:1fr 1fr}.tracking-order-card div:last-child{grid-column:1/-1}}
+
+/* live customer tracking */
+.order-tracking.is-live{position:fixed;inset:0;z-index:200;display:grid;align-content:center;overflow:auto;width:100%;height:100dvh;margin:0;padding:24px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(16px);animation:trackingBackdrop .28s ease-out}
+.order-tracking.is-live .tracking-head,.order-tracking.is-live .tracking-progress,.order-tracking.is-live .tracking-feedback,.order-tracking.is-live .tracking-order-card,.order-tracking.is-live>.full{width:min(100%,640px);margin-left:auto;margin-right:auto}
+.order-tracking.is-live .tracking-head{animation:trackingRise .36s .03s both}
+.order-tracking.is-live .tracking-progress{animation:trackingRise .36s .09s both}
+.order-tracking.is-live .tracking-feedback{animation:trackingRise .36s .15s both}
+.order-tracking.is-live .tracking-order-card{animation:trackingRise .36s .21s both}
+.order-tracking.is-live>.full{animation:trackingRise .36s .27s both}
+.tracking-step.current span{animation:trackingPulse 1.8s ease-in-out infinite}
+.tracking-feedback{transition:transform .25s ease,opacity .25s ease}
+.tracking-feedback strong{display:block}
+.tracking-order-card{transition:transform .25s ease}
+.tracking-order-card:hover{transform:translateY(-1px)}
+@keyframes trackingBackdrop{from{opacity:0}to{opacity:1}}
+@keyframes trackingRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes trackingPulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--primary) 0%,transparent)}50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--primary) 12%,transparent)}}
+.table-choice-button{position:relative;transition:transform .18s ease,opacity .18s ease,background .18s ease,border-color .18s ease}.table-choice-button:not(:disabled):hover{transform:translateY(-2px)}.table-choice-button.is-occupied{opacity:.48;cursor:not-allowed;filter:grayscale(.35)}.table-choice-button.is-occupied:after{content:"Ocupada";position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:9px;font-weight:800}.table-choice-button.is-mine{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 7%,var(--surface))}
+@media(max-width:680px){.order-tracking.is-live{align-content:start;padding:18px 12px 32px}.order-tracking.is-live .tracking-head{padding-top:22px}.order-tracking.is-live .tracking-progress{margin-top:20px}.tracking-step.current strong{font-weight:900}}
