@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#E65F3A">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/admin.css"><title>Painel • Cardápio Digital</title>
+</head>
+<body class="admin-body">
+<div id="adminApp" hidden>
+<aside class="admin-sidebar">
+<div class="admin-brand"><div class="brand-mark" id="adminBrandMark">C</div><div><strong id="adminRestaurantName">Cardápio</strong><span>Painel administrativo</span></div></div>
+<nav id="adminNav" class="admin-nav" aria-label="Navegação administrativa">
+<button data-tab="overview" class="active" type="button">Visão geral</button><button data-tab="products" type="button">Produtos</button><button data-tab="categories" type="button">Categorias</button><button data-tab="addons" type="button">Adicionais</button><button data-tab="orders" type="button">Pedidos</button><button data-tab="tags" type="button">Tags NFC</button><button data-tab="settings" type="button">Marca e mesas</button><button data-tab="coupons" type="button">Cupons</button><button data-tab="backup" type="button">Backup</button>
+</nav><a class="back-link" href="index.html">← Abrir cardápio</a>
+</aside>
+<main class="admin-main">
+<header class="admin-topbar"><div><p class="eyebrow">Operação</p><h1 id="pageTitle">Visão geral</h1></div><div class="admin-actions"><span class="status-badge" id="adminOpenStatus">Aberto</span><button class="outline-button" id="adminThemeToggle" type="button">Tema</button><button class="outline-button danger-outline" id="logoutButton" type="button">Sair</button></div></header>
+
+<section id="tab-overview" class="admin-tab active">
+<div class="stats-grid"><article class="stat-card"><span>Pedidos hoje</span><strong id="statOrders">0</strong><small>Pedidos registrados no dispositivo</small></article><article class="stat-card"><span>Faturamento hoje</span><strong id="statRevenue">R$ 0,00</strong><small>Após descontos</small></article><article class="stat-card"><span>Ticket médio</span><strong id="statAverage">R$ 0,00</strong><small>Baseado nos pedidos do dia</small></article><article class="stat-card"><span>Itens ativos</span><strong id="statProducts">0</strong><small>Disponíveis no cardápio</small></article></div>
+<div class="dashboard-grid"><article class="panel-card"><div class="panel-head"><div><h2>Mais vendidos</h2><p>Itens com maior volume no dia.</p></div></div><div id="topProducts" class="ranking-list"></div></article><article class="panel-card"><div class="panel-head"><div><h2>Operação</h2><p>Atalhos para o fluxo do restaurante.</p></div></div><div class="quick-actions"><button data-tab-jump="orders" class="quick-action" type="button">Ver pedidos</button><button data-tab-jump="tags" class="quick-action" type="button">Gerar links NFC</button><button data-tab-jump="products" class="quick-action" type="button">Editar produtos</button><button data-tab-jump="settings" class="quick-action" type="button">Personalizar marca</button></div></article></div>
+</section>
+
+<section id="tab-products" class="admin-tab"><div class="content-toolbar"><div><h2>Produtos</h2><p>Gerencie disponibilidade, preços e adicionais.</p></div><button id="newProductButton" class="primary-button" type="button">Novo produto</button></div><div id="productList" class="data-table"></div></section>
+<section id="tab-categories" class="admin-tab"><div class="content-toolbar"><div><h2>Categorias</h2><p>Organize o menu em blocos simples.</p></div></div><div class="inline-form"><input id="categoryNameInput" maxlength="40" placeholder="Nome da categoria"><button id="addCategoryButton" class="primary-button" type="button">Adicionar</button></div><div id="categoryList" class="data-table"></div></section>
+<section id="tab-addons" class="admin-tab"><div class="content-toolbar"><div><h2>Adicionais</h2><p>Crie complementos e opcionais reutilizáveis.</p></div></div><div class="inline-form addon-form"><input id="addonNameInput" maxlength="60" placeholder="Ex.: Bacon"><input id="addonPriceInput" type="number" min="0" step="0.01" placeholder="Preço"><select id="addonGroupInput"><option value="extras">Extras</option><option value="molhos">Molhos</option><option value="bebidas">Bebidas</option></select><button id="addAddonButton" class="primary-button" type="button">Adicionar</button></div><div id="addonList" class="data-table"></div></section>
+<section id="tab-orders" class="admin-tab"><div class="content-toolbar"><div><h2>Pedidos</h2><p>Kanban operacional do dispositivo atual.</p></div><button id="refreshOrdersButton" class="outline-button" type="button">Atualizar</button></div><div id="kanban" class="kanban-board"></div></section>
+<section id="tab-tags" class="admin-tab"><div class="content-toolbar"><div><h2>Tags NFC e QR Code</h2><p>Copie a URL de cada mesa ou imprima o QR Code.</p></div><button id="printAllQrsButton" class="outline-button" type="button">Imprimir todos</button></div><div id="tagList" class="tag-list"></div></section>
+
+<section id="tab-settings" class="admin-tab"><div class="settings-grid">
+<article class="panel-card"><div class="panel-head"><div><h2>Marca</h2><p>As alterações aparecem imediatamente no cardápio.</p></div></div><form id="brandForm" class="stack-form">
+<label class="field-label"><span>Nome do restaurante</span><input id="settingName" required maxlength="80"></label><label class="field-label"><span>Logo (URL)</span><input id="settingLogo" maxlength="500" placeholder="https://..."></label><label class="field-label"><span>Cor principal</span><input id="settingColor" type="color"></label><label class="field-label"><span>Fonte</span><select id="settingFont"><option>Inter</option><option>Arial</option><option>Georgia</option><option>system-ui</option></select></label><label class="field-label"><span>WhatsApp do restaurante</span><input id="settingWhatsapp" inputmode="tel" placeholder="55DDDNÚMERO"></label><label class="switch-row"><input id="settingOpen" type="checkbox"><span><strong>Restaurante aberto</strong><small>Controla o status exibido no cardápio.</small></span></label><label class="field-label"><span>Senha do painel</span><input id="settingPassword" type="password" minlength="4" placeholder="Nova senha"></label><button class="primary-button" type="submit">Salvar personalização</button>
+</form></article>
+<article class="panel-card"><div class="panel-head"><div><h2>Mesas</h2><p>Defina as mesas aceitas pelos links NFC.</p></div></div><div class="inline-form"><input id="tableNumberInput" type="number" min="1" max="999" placeholder="Número"><button id="addTableButton" class="primary-button" type="button">Adicionar</button></div><div id="tableList" class="table-admin-list"></div></article>
+</div></section>
+
+<section id="tab-coupons" class="admin-tab"><div class="content-toolbar"><div><h2>Cupons</h2><p>Descontos simples por código e valor percentual.</p></div></div><div class="inline-form coupon-admin-form"><input id="couponCodeInput" maxlength="20" placeholder="Código"><input id="couponPercentInput" type="number" min="1" max="100" placeholder="%"><input id="couponMinInput" type="number" min="0" step="0.01" placeholder="Compra mínima"><button id="addCouponButton" class="primary-button" type="button">Adicionar</button></div><div id="couponList" class="data-table"></div></section>
+
+<section id="tab-backup" class="admin-tab"><div class="backup-grid"><article class="panel-card"><div class="panel-head"><div><h2>Exportar</h2><p>Baixe todos os dados locais em JSON.</p></div></div><button id="exportButton" class="primary-button" type="button">Baixar backup</button></article><article class="panel-card"><div class="panel-head"><div><h2>Importar</h2><p>Substitua os dados atuais por um backup.</p></div></div><label class="upload-button"><input id="importFile" type="file" accept="application/json">Selecionar JSON</label><p class="microcopy">A importação sobrescreve categorias, produtos, adicionais, mesas, pedidos e configurações.</p></article><article class="panel-card warning-panel"><div class="panel-head"><div><h2>Limpar dados</h2><p>Apaga o armazenamento local deste navegador.</p></div></div><button id="clearDataButton" class="outline-button danger-outline" type="button">Restaurar seed</button></article></div></section>
+</main>
+</div>
+
+<dialog id="loginDialog" class="modal"><form id="loginForm" class="modal-card login-card" method="dialog"><div class="brand-mark large">C</div><p class="eyebrow">Acesso administrativo</p><h1 id="loginRestaurantName">Cardápio Digital</h1><p class="muted">Esta senha é apenas uma proteção básica no front-end. Não use este painel para dados realmente sensíveis.</p><label class="field-label"><span>Senha</span><input id="loginPassword" type="password" autocomplete="current-password" required></label><button class="primary-button full" type="submit">Entrar</button><p id="loginError" class="error-message" aria-live="polite"></p></form></dialog>
+
+<dialog id="productEditDialog" class="modal"><form id="productForm" class="modal-card large-modal" method="dialog"><button class="modal-close" data-close="productEditDialog" type="button" aria-label="Fechar">×</button><div class="cart-head"><div><p class="eyebrow">Catálogo</p><h2 id="productFormTitle">Novo produto</h2></div></div><input id="productIdInput" type="hidden">
+<div class="form-grid two"><label class="field-label"><span>Nome</span><input id="productNameInput" required maxlength="80"></label><label class="field-label"><span>Preço</span><input id="productPriceInput" required type="number" min="0" step="0.01"></label></div>
+<div class="form-grid two"><label class="field-label"><span>Categoria</span><select id="productCategoryInput" required></select></label><label class="field-label"><span>Tags</span><input id="productTagsInput" maxlength="120" placeholder="vegano, picante"></label></div>
+<label class="field-label"><span>Descrição</span><textarea id="productDescriptionInput" rows="3" maxlength="240"></textarea></label><label class="field-label"><span>Imagem por URL</span><input id="productImageInput" maxlength="500" placeholder="https://..."></label>
+<div class="upload-area"><label class="upload-button"><input id="productImageFile" type="file" accept="image/*">Enviar imagem e comprimir</label><span id="imageUploadStatus" class="field-help"></span></div>
+<fieldset class="addon-fieldset"><legend>Adicionais vinculados</legend><div id="productAddonOptions" class="checkbox-grid"></div></fieldset>
+<label class="switch-row"><input id="productActiveInput" type="checkbox" checked><span><strong>Produto ativo</strong><small>Desmarque para mostrar como esgotado.</small></span></label><button class="primary-button full" type="submit">Salvar produto</button>
+</form></dialog>
+<div id="adminToast" class="toast" role="status" aria-live="polite"></div>
+<script src="js/data.js"></script><script src="js/utils.js"></script><script src="js/i18n.js"></script><script src="js/admin.js"></script>
+</body>
+</html>
