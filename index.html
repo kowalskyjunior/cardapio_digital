@@ -37,6 +37,35 @@
   </div>
 </section>
 
+<section id="orderTracking" class="order-tracking" hidden aria-live="polite" aria-labelledby="orderTrackingTitle">
+  <div class="tracking-head">
+    <div>
+      <p class="eyebrow">Acompanhe seu pedido</p>
+      <h2 id="orderTrackingTitle">Seu pedido está a caminho</h2>
+      <p id="trackingSubtitle" class="muted">Atualizamos esta tela conforme o restaurante prepara seu pedido.</p>
+    </div>
+    <span id="trackingOrderId" class="tracking-order-id"></span>
+  </div>
+  <div class="tracking-progress" id="trackingProgress">
+    <div class="tracking-line" aria-hidden="true"></div>
+    <div class="tracking-step" data-status="new"><span>1</span><strong>Recebido</strong><small>Pedido enviado</small></div>
+    <div class="tracking-step" data-status="preparing"><span>2</span><strong>Preparando</strong><small>Na cozinha</small></div>
+    <div class="tracking-step" data-status="ready"><span>3</span><strong>Pronto</strong><small>Quase lá</small></div>
+    <div class="tracking-step" data-status="delivered"><span>4</span><strong>Entregue</strong><small>Na sua mesa</small></div>
+    <div class="tracking-step" data-status="completed"><span>5</span><strong>Finalizado</strong><small>Até a próxima</small></div>
+  </div>
+  <div class="tracking-feedback" id="trackingFeedback">
+    <strong id="trackingFeedbackTitle">Recebemos seu pedido!</strong>
+    <p id="trackingFeedbackText" class="muted">A equipe do restaurante já recebeu seu pedido.</p>
+  </div>
+  <div class="tracking-order-card">
+    <div><span>Pedido</span><strong id="trackingShortId">#—</strong></div>
+    <div><span>Total</span><strong id="trackingTotal">R$ 0,00</strong></div>
+    <div><span>Destino</span><strong id="trackingDestination">—</strong></div>
+  </div>
+  <button id="closeTrackingButton" class="outline-button full" type="button">Continuar vendo o cardápio</button>
+</section>
+
 <main>
 <section class="search-wrap" aria-label="Busca">
 <label class="search-field"><span class="sr-only">Buscar no cardápio</span><span class="search-icon" id="searchIcon" aria-hidden="true"></span><input id="searchInput" type="search" autocomplete="off" placeholder="O que você está com vontade de comer?"><button id="clearSearch" class="clear-search" type="button" aria-label="Limpar busca" hidden>×</button></label>
