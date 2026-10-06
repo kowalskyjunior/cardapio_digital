@@ -154,3 +154,50 @@
 
 /* native hidden must always win over component display rules */
 [hidden]{display:none!important}
+
+/* iFood-inspired product detail */
+.product-dialog{max-width:760px}
+.product-detail-modal{width:min(100%,620px);height:min(92dvh,780px);display:grid;grid-template-rows:260px minmax(0,1fr) auto;overflow:hidden;border:0;border-radius:22px;background:var(--surface)}
+.product-detail-media{position:relative;min-height:0;background:var(--surface-2);overflow:hidden}
+.product-detail-media>img{width:100%;height:100%;object-fit:cover}
+.product-detail-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 34%,transparent 65%,rgba(0,0,0,.1));pointer-events:none}
+.product-detail-back{position:absolute!important;top:12px!important;left:12px!important;right:auto!important;z-index:3;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.94);color:#171717;font-size:32px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.16)}
+.product-detail-tag{position:absolute;left:16px;bottom:14px;z-index:3;display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--text);font-size:10px;font-weight:800;box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.product-detail-scroll{min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 20px 18px;-webkit-overflow-scrolling:touch}
+.product-detail-intro{padding:18px 0 18px;border-bottom:1px solid var(--border)}
+.product-detail-title-row{display:flex;justify-content:space-between;align-items:start;gap:16px}
+.product-detail-title-row h2{margin:0 0 7px;font-size:24px;line-height:1.08;letter-spacing:-.03em}
+.product-detail-title-row p{margin:0;max-width:500px;font-size:12px;line-height:1.45}
+.product-detail-price{padding-top:2px;color:var(--primary);font-size:16px;white-space:nowrap}
+.product-detail-options{padding-top:4px}
+.addon-group{padding:17px 0 4px;border-bottom:1px solid var(--border)}
+.addon-group h4{margin:0 0 4px;font-size:15px}
+.addon-group:before{content:"Escolha seus itens";display:block;margin-bottom:10px;color:var(--muted);font-size:10px}
+.addon-option{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:50px;padding:9px 0}
+.addon-option-main{display:flex;align-items:center;gap:10px;min-width:0}
+.addon-option input{width:20px;height:20px;accent-color:var(--primary);flex:0 0 auto}
+.addon-option-main>span{font-size:12px;font-weight:600}
+.addon-option small{color:var(--muted);font-size:11px;white-space:nowrap}
+.product-detail-section{padding:18px 0 4px}
+.product-detail-section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.product-detail-section-head h3{margin:0;font-size:15px}
+.product-detail-section-head span{color:var(--muted);font-size:10px}
+.product-detail-section textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);padding:12px;font-size:12px;outline:0}
+.product-detail-footer{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--border);background:var(--surface);box-shadow:0 -6px 18px color-mix(in srgb,var(--surface) 70%,transparent);z-index:4}
+.product-detail-quantity{display:inline-flex!important;min-height:48px!important;border:1px solid var(--border);border-radius:11px;background:var(--surface-2)}
+.product-detail-quantity button{width:42px;height:46px;border:0;background:transparent;color:var(--primary);font-size:22px}
+.product-detail-quantity output{width:28px;display:grid;place-items:center;font-size:13px;font-weight:800}
+.product-detail-add{min-height:50px;border-radius:10px;font-size:13px}
+.product-detail-add span{margin-left:6px}
+@media(max-width:680px){
+  .product-dialog{max-width:none;width:100%;height:100dvh}
+  .product-dialog::backdrop{background:rgba(0,0,0,.55)}
+  .product-detail-modal{width:100%;height:100dvh;border-radius:0;grid-template-rows:250px minmax(0,1fr) auto}
+  .product-detail-scroll{padding-inline:16px;padding-bottom:18px}
+  .product-detail-title-row{display:block}
+  .product-detail-price{display:block;margin-top:10px}
+  .product-detail-footer{grid-template-columns:112px minmax(0,1fr);padding-inline:12px}
+}
+@media(min-width:681px){
+  .product-detail-modal{height:min(90dvh,800px)}
+}
