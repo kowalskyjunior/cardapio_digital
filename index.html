@@ -81,23 +81,86 @@
 
 <dialog id="cartDialog" class="modal modal-bottom">
 <div class="modal-card cart-modal">
-<div class="cart-head"><div><p class="eyebrow">Seu pedido</p><h2>Carrinho</h2></div><button class="modal-close" id="closeCartTop" data-close="cartDialog" type="button" aria-label="Fechar">×</button></div>
+<header class="cart-head">
+  <button class="cart-back" id="closeCartTop" data-close="cartDialog" type="button" aria-label="Voltar ao cardápio">‹</button>
+  <h2>Seu pedido</h2>
+  <span class="cart-head-spacer" aria-hidden="true"></span>
+</header>
+
 <div class="cart-scroll" id="cartScroll">
-<div id="cartItems" class="cart-items"></div>
-<section class="cart-upsell" id="cartUpsell" hidden><div class="discover-head"><div><p class="eyebrow">Aproveite</p><h3>Peça também</h3></div></div><div id="cartRecommendations" class="cart-recommendations"></div></section>
-<div id="cartEmpty" class="state-card compact" hidden><div class="state-icon">🛒</div><h3>Seu carrinho está vazio</h3><p class="muted">Adicione um item para começar.</p></div>
-<form id="checkoutForm" class="checkout-form" novalidate>
-<div class="form-grid two"><label class="field-label"><span>Nome</span><input id="customerName" required maxlength="80" autocomplete="name" placeholder="Como podemos chamar você?"></label><label class="field-label"><span>Contato</span><input id="customerPhone" maxlength="20" autocomplete="tel" placeholder="(opcional)"></label></div>
-<fieldset class="order-type-field"><legend>Tipo de pedido</legend><div class="choice-grid">
-<label class="choice-card"><input type="radio" name="orderType" value="table" checked><span>Na mesa<span class="choice-meta" id="tableChoiceMeta">Mesa —</span></span></label>
-<label class="choice-card"><input type="radio" name="orderType" value="pickup"><span>Retirada<span class="choice-meta">Balcão</span></span></label>
-<label class="choice-card"><input type="radio" name="orderType" value="delivery"><span>Delivery<span class="choice-meta">Informe o endereço</span></span></label>
-</div></fieldset>
-<label id="addressField" class="field-label" hidden><span>Endereço</span><textarea id="customerAddress" rows="2" maxlength="220" placeholder="Rua, número, bairro e referência"></textarea></label>
-<label class="field-label"><span>Cupom</span><div class="coupon-row"><input id="couponInput" maxlength="30" placeholder="Ex.: BEMVINDO10"><button id="applyCouponButton" class="outline-button" type="button">Aplicar</button></div><small id="couponMessage" class="field-help" aria-live="polite"></small></label>
-<div class="checkout-summary"><div><span>Subtotal</span><strong id="checkoutSubtotal">R$ 0,00</strong></div><div><span>Desconto</span><strong id="checkoutDiscount">R$ 0,00</strong></div><div class="checkout-grand"><span>Total</span><strong id="checkoutTotal">R$ 0,00</strong></div></div>
-<div class="checkout-actions"><button class="primary-button full" id="sendOrderButton" type="submit">Confirmar pedido · <span id="checkoutButtonTotal">R$ 0,00</span></button><button class="checkout-cancel" id="closeCartBottom" type="button">Voltar ao cardápio</button></div><p class="microcopy">Seu pedido será salvo neste dispositivo e aberto no WhatsApp do restaurante.</p>
-</form>
+  <section class="cart-store">
+    <div class="cart-store-logo"><img id="cartRestaurantLogo" alt="" hidden><span id="cartRestaurantMark">C</span></div>
+    <div class="cart-store-copy">
+      <strong id="cartRestaurantName">Chicos Burger</strong>
+      <button type="button" id="continueShoppingButton">Adicionar mais itens</button>
+    </div>
+  </section>
+
+  <section class="cart-section">
+    <div class="cart-section-head">
+      <h3>Itens adicionados</h3>
+      <span id="cartItemSummary" class="cart-section-note"></span>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+  </section>
+
+  <section class="cart-upsell" id="cartUpsell" hidden>
+    <div class="cart-section-head">
+      <h3>Que tal adicionar mais?</h3>
+      <span class="cart-section-note">Sugestões da casa</span>
+    </div>
+    <div id="cartRecommendations" class="cart-recommendations"></div>
+  </section>
+
+  <div id="cartEmpty" class="state-card compact" hidden>
+    <div class="state-icon">🛒</div>
+    <h3>Seu pedido está vazio</h3>
+    <p class="muted">Escolha algo gostoso para começar.</p>
+    <button class="primary-button" id="emptyCartAddItems" type="button">Adicionar itens</button>
+  </div>
+
+  <form id="checkoutForm" class="checkout-form" novalidate>
+    <section class="checkout-section">
+      <div class="cart-section-head"><h3>Tipo de pedido</h3></div>
+      <fieldset class="order-type-field">
+        <legend class="sr-only">Escolha como deseja receber seu pedido</legend>
+        <div class="choice-grid">
+          <label class="choice-card"><input type="radio" name="orderType" value="table" checked><span><strong>Na mesa</strong><small class="choice-meta" id="tableChoiceMeta">Mesa —</small></span></label>
+          <label class="choice-card"><input type="radio" name="orderType" value="pickup"><span><strong>Retirada</strong><small class="choice-meta">Balcão</small></span></label>
+          <label class="choice-card"><input type="radio" name="orderType" value="delivery"><span><strong>Delivery</strong><small class="choice-meta">Em casa</small></span></label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section class="checkout-section">
+      <div class="cart-section-head"><h3>Seus dados</h3></div>
+      <div class="form-grid two">
+        <label class="field-label"><span>Nome</span><input id="customerName" required maxlength="80" autocomplete="name" placeholder="Como podemos chamar você?"></label>
+        <label class="field-label"><span>Contato <em>(opcional)</em></span><input id="customerPhone" maxlength="20" autocomplete="tel" placeholder="Seu WhatsApp"></label>
+      </div>
+      <label id="addressField" class="field-label" hidden><span>Endereço</span><textarea id="customerAddress" rows="2" maxlength="220" placeholder="Rua, número, bairro e referência"></textarea></label>
+    </section>
+
+    <section class="checkout-section">
+      <div class="cart-section-head"><h3>Cupom de desconto</h3></div>
+      <label class="field-label coupon-field">
+        <span class="sr-only">Código do cupom</span>
+        <div class="coupon-row"><input id="couponInput" maxlength="30" placeholder="Digite seu cupom"><button id="applyCouponButton" class="outline-button" type="button">Aplicar</button></div>
+        <small id="couponMessage" class="field-help" aria-live="polite"></small>
+      </label>
+    </section>
+
+    <div class="checkout-summary">
+      <div><span>Subtotal</span><strong id="checkoutSubtotal">R$ 0,00</strong></div>
+      <div><span>Desconto</span><strong id="checkoutDiscount">− R$ 0,00</strong></div>
+      <div class="checkout-grand"><span>Total</span><strong id="checkoutTotal">R$ 0,00</strong></div>
+    </div>
+
+    <div class="checkout-actions">
+      <button class="primary-button full" id="sendOrderButton" type="submit">Confirmar pedido · <span id="checkoutButtonTotal">R$ 0,00</span></button>
+    </div>
+    <p class="microcopy">Ao confirmar, seu pedido será aberto no WhatsApp do restaurante.</p>
+  </form>
 </div>
 </div>
 </dialog>
