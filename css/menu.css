@@ -1826,3 +1826,113 @@ body.product-modal-open{overflow:hidden!important;position:fixed;width:100%;heig
     background:var(--surface)!important;
   }
 }
+
+/* ==========================================================================
+   Mobile product detail: dedicated fixed host using the exact desktop card
+   markup/styles. The native <dialog> is disabled only on small screens.
+   ========================================================================== */
+@media(max-width:700px){
+  dialog.product-dialog{display:none!important;visibility:hidden!important;pointer-events:none!important}
+  body.mobile-product-open{
+    overflow:hidden!important;
+    touch-action:none!important;
+  }
+  .mobile-product-overlay{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    z-index:2147483647!important;
+    background:rgba(0,0,0,.66)!important;
+    display:block!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+  .mobile-product-overlay[hidden]{display:none!important}
+  .mobile-product-overlay-card{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:var(--surface)!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:220px minmax(0,1fr) auto!important;
+    overflow:hidden!important;
+  }
+  .mobile-product-overlay-card .product-detail-media{
+    width:100%!important;
+    height:220px!important;
+    min-height:220px!important;
+    overflow:hidden!important;
+  }
+  .mobile-product-overlay-card .product-detail-scroll{
+    min-width:0!important;
+    min-height:0!important;
+    height:auto!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    touch-action:pan-y!important;
+    padding:0 15px 18px!important;
+    background:var(--surface)!important;
+  }
+  .mobile-product-overlay-card .product-detail-intro{
+    padding:16px 0 13px!important;
+  }
+  .mobile-product-overlay-card .product-detail-title-row{
+    display:block!important;
+    min-width:0!important;
+  }
+  .mobile-product-overlay-card .product-detail-title-row h2{
+    max-width:100%!important;
+    font-size:23px!important;
+    line-height:1.08!important;
+    overflow-wrap:anywhere!important;
+  }
+  .mobile-product-overlay-card .product-detail-title-row p{
+    max-width:100%!important;
+    font-size:11px!important;
+    line-height:1.45!important;
+  }
+  .mobile-product-overlay-card .product-detail-price{
+    display:block!important;
+    margin-top:7px!important;
+    font-size:17px!important;
+  }
+  .mobile-product-overlay-card .addon-group{padding:13px 0 7px!important}
+  .mobile-product-overlay-card .addon-option{min-height:48px!important;padding:8px 0!important}
+  .mobile-product-overlay-card .product-detail-section{padding:14px 0 3px!important}
+  .mobile-product-overlay-card .product-detail-section textarea{min-height:76px!important}
+  .mobile-product-overlay-card .product-detail-footer{
+    width:100%!important;
+    min-height:60px!important;
+    grid-template-columns:104px minmax(0,1fr)!important;
+    gap:8px!important;
+    padding:9px 10px calc(9px + env(safe-area-inset-bottom))!important;
+    background:var(--surface)!important;
+    border-top:1px solid var(--border)!important;
+  }
+  .mobile-product-overlay-card .product-detail-quantity{
+    width:104px!important;
+    min-width:104px!important;
+  }
+  .mobile-product-overlay-card .product-detail-add{
+    min-width:0!important;
+    min-height:47px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+  .mobile-product-overlay-card .product-detail-back{
+    position:absolute!important;
+    top:12px!important;
+    left:12px!important;
+    z-index:5!important;
+  }
+}
