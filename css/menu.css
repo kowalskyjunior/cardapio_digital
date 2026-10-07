@@ -1750,3 +1750,79 @@ body.product-modal-open{overflow:hidden!important;position:fixed;width:100%;heig
   .add-button{width:32px!important;height:32px!important}
   dialog#cartDialog[open] .choice-grid{grid-template-columns:1fr!important}
 }
+
+/* Final iOS modal fix: mobile product dialog is a non-modal fullscreen sheet. */
+@media(max-width:700px){
+  html:has(dialog.product-dialog[open]){
+    overflow:hidden!important;
+    overscroll-behavior:none!important;
+  }
+  body.product-modal-open{
+    position:static!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:100dvh!important;
+    overflow:hidden!important;
+    touch-action:none!important;
+  }
+  dialog.product-dialog.is-mobile-open[open]{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    min-width:0!important;
+    min-height:0!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:rgba(0,0,0,.66)!important;
+    display:block!important;
+    overflow:hidden!important;
+    transform:none!important;
+    z-index:2147483647!important;
+  }
+  dialog.product-dialog.is-mobile-open[open]::backdrop{display:none!important}
+  dialog.product-dialog.is-mobile-open[open]>.product-detail-modal{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    min-height:0!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:220px minmax(0,1fr) auto!important;
+    overflow:hidden!important;
+    background:var(--surface)!important;
+  }
+  dialog.product-dialog.is-mobile-open[open] .product-detail-media{
+    width:100%!important;
+    height:220px!important;
+    min-height:220px!important;
+    overflow:hidden!important;
+  }
+  dialog.product-dialog.is-mobile-open[open] .product-detail-scroll{
+    min-height:0!important;
+    height:auto!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior:contain!important;
+    -webkit-overflow-scrolling:touch!important;
+    touch-action:pan-y!important;
+    padding:0 15px 16px!important;
+  }
+  dialog.product-dialog.is-mobile-open[open] .product-detail-footer{
+    position:relative!important;
+    z-index:5!important;
+    width:100%!important;
+    min-height:60px!important;
+    background:var(--surface)!important;
+  }
+}
