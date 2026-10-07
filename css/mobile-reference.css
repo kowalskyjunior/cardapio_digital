@@ -147,3 +147,50 @@
     display:none!important;
   }
 }
+
+/* Final iPhone fix: the reference shell must not exist visually while product detail is open. */
+@media(max-width:700px){
+  body.product-modal-open #mobileReferenceApp{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  body.product-modal-open .menu-app{
+    min-height:100dvh!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+  body.product-modal-open dialog.product-dialog[open]{
+    position:fixed!important;
+    top:0!important;
+    right:0!important;
+    bottom:0!important;
+    left:0!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    transform:none!important;
+    display:block!important;
+    overflow:hidden!important;
+    z-index:2147483647!important;
+  }
+  body.product-modal-open dialog.product-dialog[open]>.product-detail-modal{
+    width:100%!important;
+    height:100%!important;
+    min-height:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    border-radius:0!important;
+  }
+  body.product-modal-open dialog.product-dialog[open] .product-detail-media{
+    height:220px!important;
+    min-height:220px!important;
+  }
+}
