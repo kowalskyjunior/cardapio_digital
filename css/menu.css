@@ -1304,3 +1304,449 @@ body.product-modal-open{overflow:hidden!important;position:fixed;width:100%;heig
   .add-button{width:32px!important;height:32px!important}
   .modal-bottom .choice-grid{grid-template-columns:1fr!important}
 }
+
+/* ========================================================================
+   SHARED DESKTOP/MOBILE EXPERIENCE
+   Mobile uses the same HTML, JS and components as desktop — only layout
+   and sizing are adapted for small screens.
+   ======================================================================== */
+@media (max-width:700px){
+  html{
+    scroll-behavior:auto!important;
+    overflow-x:hidden!important;
+    width:100%;
+  }
+  body{
+    min-width:320px!important;
+    width:100%!important;
+    max-width:100vw!important;
+    overflow-x:hidden!important;
+    background:var(--bg)!important;
+  }
+  .app-shell{
+    width:100%!important;
+    min-width:0!important;
+    padding-bottom:92px!important;
+    overflow-x:hidden!important;
+  }
+  main{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+    min-width:0!important;
+    margin:0 auto!important;
+  }
+
+  /* Header */
+  .menu-topbar{
+    position:sticky!important;
+    top:0!important;
+    z-index:50!important;
+    min-height:58px!important;
+    padding:8px 10px!important;
+    gap:8px!important;
+  }
+  .brand-lockup{min-width:0!important;flex:1 1 auto!important;gap:8px!important}
+  .brand-mark{width:36px!important;height:36px!important;border-radius:10px!important}
+  .brand-mark.large{width:52px!important;height:52px!important;border-radius:14px!important}
+  .brand-copy{min-width:0!important;max-width:42vw!important}
+  .brand-copy strong{font-size:13px!important;max-width:100%!important}
+  .status-badge{font-size:9px!important;padding:3px 7px!important}
+  .header-actions{gap:6px!important}
+  .table-badge{max-width:31vw!important;min-height:30px!important;padding:0 9px!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:10px!important}
+  .icon-button{width:36px!important;height:36px!important;border-radius:10px!important}
+
+  /* Restaurant hero */
+  .brand-hero{
+    width:100%!important;
+    min-height:264px!important;
+    margin:0 0 12px!important;
+    border-radius:0 0 20px 20px!important;
+  }
+  .brand-cover{height:150px!important}
+  .brand-hero-inner{
+    min-height:264px!important;
+    grid-template-columns:66px minmax(0,1fr) auto!important;
+    align-items:end!important;
+    gap:10px!important;
+    padding:10px 12px 15px!important;
+    background:linear-gradient(180deg,transparent 24%,color-mix(in srgb,var(--surface) 88%,transparent) 55%,var(--surface) 100%)!important;
+  }
+  .brand-avatar{
+    width:66px!important;
+    height:66px!important;
+    border-radius:18px!important;
+    border-width:4px!important;
+    grid-column:1!important;
+    grid-row:1!important;
+    align-self:end!important;
+  }
+  .brand-identity{
+    min-width:0!important;
+    grid-column:2!important;
+    grid-row:1!important;
+    align-self:end!important;
+  }
+  .brand-status-row{gap:5px!important;margin-bottom:6px!important}
+  .hero-status,.hero-table{min-height:22px!important;padding:0 7px!important;font-size:9px!important}
+  .brand-hero h1{
+    max-width:100%!important;
+    font-size:25px!important;
+    line-height:1.05!important;
+    margin-bottom:4px!important;
+    overflow-wrap:anywhere!important;
+  }
+  .brand-hero .muted{font-size:10.5px!important;line-height:1.35!important}
+  .hero-action{
+    grid-column:3!important;
+    grid-row:1!important;
+    align-self:end!important;
+    min-height:38px!important;
+    max-width:94px!important;
+    padding:0 9px!important;
+    font-size:9.5px!important;
+    white-space:normal!important;
+    border-radius:10px!important;
+  }
+
+  /* Search / categories */
+  .search-wrap{
+    position:relative!important;
+    top:auto!important;
+    z-index:10!important;
+    padding:4px 0 8px!important;
+    background:var(--bg)!important;
+    backdrop-filter:none!important;
+  }
+  .search-field{
+    min-height:46px!important;
+    border-radius:13px!important;
+    padding-inline:12px!important;
+  }
+  .category-nav{
+    position:relative!important;
+    top:auto!important;
+    z-index:8!important;
+    padding:4px 0 8px!important;
+    margin:0 0 8px!important;
+    background:transparent!important;
+    backdrop-filter:none!important;
+  }
+  .category-chip{min-height:36px!important;padding-inline:13px!important;font-size:11px!important}
+  .filter-nav{position:relative!important;top:auto!important;padding:0 0 8px!important;margin:0 0 8px!important}
+  .filter-chip{min-height:32px!important;padding-inline:10px!important;font-size:10px!important}
+
+  /* Discover / repeat */
+  .discover-section{margin:12px 0 22px!important}
+  .discover-head{margin-bottom:9px!important}
+  .discover-head h2{font-size:20px!important}
+  .discover-note{font-size:9px!important}
+  .featured-scroller,.repeat-scroller{
+    gap:8px!important;
+    overflow-x:auto!important;
+    padding:2px 1px 7px!important;
+    scroll-snap-type:x proximity!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .featured-card{
+    flex-basis:78vw!important;
+    max-width:286px!important;
+    border-radius:16px!important;
+  }
+  .featured-media{height:132px!important}
+  .featured-content{padding:10px 11px 12px!important}
+  .featured-content h3{font-size:14px!important}
+  .featured-content strong{font-size:14px!important}
+  .repeat-card{
+    flex-basis:78vw!important;
+    max-width:286px!important;
+    grid-template-columns:60px 1fr!important;
+    padding:8px!important;
+  }
+  .repeat-card img{width:60px!important;height:60px!important}
+
+  /* Product list: same cards, adapted to two-column compact mobile layout */
+  .menu-sections{padding-top:2px!important}
+  .menu-section{margin-bottom:26px!important;scroll-margin-top:70px!important}
+  .section-head{margin-bottom:9px!important}
+  .section-head h2{font-size:20px!important}
+  .section-head p{font-size:10px!important;line-height:1.35!important}
+  .product-grid{grid-template-columns:1fr!important;gap:8px!important}
+  .product-card{
+    width:100%!important;
+    min-width:0!important;
+    grid-template-columns:88px minmax(0,1fr)!important;
+    gap:10px!important;
+    min-height:112px!important;
+    padding:7px!important;
+    border-radius:15px!important;
+  }
+  .product-media,.product-media img{
+    width:88px!important;
+    height:98px!important;
+    min-width:88px!important;
+    min-height:98px!important;
+    border-radius:11px!important;
+  }
+  .product-body{min-width:0!important;padding:3px 2px 3px 0!important}
+  .product-title-row{min-width:0!important;gap:5px!important}
+  .product-card h3{
+    min-width:0!important;
+    font-size:13px!important;
+    line-height:1.2!important;
+    overflow-wrap:anywhere!important;
+  }
+  .product-mini-tag{max-width:78px!important;font-size:8px!important}
+  .product-desc{font-size:10px!important;line-height:1.35!important}
+  .product-price{font-size:13px!important}
+  .add-button{width:34px!important;height:34px!important;border-radius:9px!important}
+
+  /* Order tracking */
+  .order-tracking{
+    width:100%!important;
+    margin:10px auto 22px!important;
+    padding:14px!important;
+    border-radius:17px!important;
+  }
+  .tracking-head{flex-direction:column!important;gap:7px!important;margin-bottom:12px!important}
+  .tracking-head h2{font-size:20px!important}
+  .tracking-head p{font-size:10px!important}
+  .tracking-order-id{align-self:flex-start!important}
+  .tracking-progress{
+    display:flex!important;
+    gap:10px!important;
+    overflow-x:auto!important;
+    padding:2px 2px 8px!important;
+    margin:0 0 12px!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .tracking-line{display:none!important}
+  .tracking-step{flex:0 0 78px!important;min-width:78px!important}
+
+  /* Address / footer */
+  .visit-section{width:100%!important;margin:14px auto 10px!important;border-radius:17px!important}
+  .visit-inner{flex-direction:column!important;align-items:stretch!important;padding:15px!important;gap:12px!important}
+  .visit-actions{display:grid!important;grid-template-columns:1fr!important;gap:7px!important}
+  .visit-actions a{width:100%!important;min-height:44px!important}
+  .menu-footer{width:100%!important;margin-bottom:100px!important}
+
+  /* Fixed cart */
+  .cart-bar{
+    left:10px!important;
+    right:10px!important;
+    bottom:10px!important;
+    width:auto!important;
+    max-width:none!important;
+    transform:none!important;
+    min-height:56px!important;
+    padding:0 13px!important;
+    border-radius:15px!important;
+    z-index:60!important;
+  }
+
+  /* Product modal — same component as desktop, mobile sheet layout */
+  body.product-modal-open{
+    position:fixed!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    overflow:hidden!important;
+    touch-action:none!important;
+  }
+  dialog.product-dialog[open]{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    min-width:0!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    display:block!important;
+    overflow:hidden!important;
+    transform:none!important;
+    background:transparent!important;
+  }
+  dialog.product-dialog[open]>.product-detail-modal{
+    position:relative!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    min-height:0!important;
+    margin:0!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:220px minmax(0,1fr) auto!important;
+    border-radius:0!important;
+    overflow:hidden!important;
+  }
+  dialog.product-dialog[open] .product-detail-media{
+    width:100%!important;
+    height:220px!important;
+    min-height:0!important;
+  }
+  dialog.product-dialog[open] .product-detail-scroll{
+    width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    height:auto!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    touch-action:pan-y!important;
+    padding:0 16px 18px!important;
+  }
+  dialog.product-dialog[open] .product-detail-intro{padding:16px 0 13px!important}
+  dialog.product-dialog[open] .product-detail-title-row{display:block!important}
+  dialog.product-dialog[open] .product-detail-title-row h2{
+    max-width:100%!important;
+    font-size:23px!important;
+    line-height:1.08!important;
+    overflow-wrap:anywhere!important;
+  }
+  dialog.product-dialog[open] .product-detail-title-row p{
+    max-width:100%!important;
+    font-size:11px!important;
+    line-height:1.45!important;
+  }
+  dialog.product-dialog[open] .product-detail-price{
+    display:block!important;
+    margin-top:7px!important;
+    font-size:17px!important;
+  }
+  dialog.product-dialog[open] .addon-group{padding:13px 0 7px!important}
+  dialog.product-dialog[open] .addon-option{min-height:48px!important;padding:8px 0!important}
+  dialog.product-dialog[open] .addon-option-main>span{font-size:11px!important}
+  dialog.product-dialog[open] .product-detail-section{padding:14px 0 3px!important}
+  dialog.product-dialog[open] .product-detail-section textarea{min-height:76px!important}
+  dialog.product-dialog[open] .product-detail-footer{
+    width:100%!important;
+    min-height:60px!important;
+    grid-template-columns:104px minmax(0,1fr)!important;
+    gap:8px!important;
+    padding:9px 10px calc(9px + env(safe-area-inset-bottom))!important;
+    border-top:1px solid var(--border)!important;
+    background:var(--surface)!important;
+  }
+  dialog.product-dialog[open] .product-detail-quantity{width:104px!important;min-width:104px!important}
+  dialog.product-dialog[open] .product-detail-add{min-height:47px!important;font-size:12px!important;padding-inline:10px!important}
+
+  /* Cart modal — same desktop component, single scrolling surface */
+  dialog#cartDialog[open]{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    display:grid!important;
+    place-items:end center!important;
+    overflow:hidden!important;
+    background:transparent!important;
+  }
+  dialog#cartDialog[open]>.cart-modal{
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    min-height:0!important;
+    padding:0!important;
+    border-radius:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:0!important;
+    overflow:hidden!important;
+  }
+  dialog#cartDialog[open] .cart-head{
+    position:relative!important;
+    flex:0 0 56px!important;
+    height:56px!important;
+    padding:0 12px!important;
+    border-bottom:1px solid var(--border)!important;
+    background:var(--surface)!important;
+  }
+  dialog#cartDialog[open] .cart-scroll{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    width:100%!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    padding:12px 14px calc(18px + env(safe-area-inset-bottom))!important;
+  }
+  dialog#cartDialog[open] .cart-items,
+  dialog#cartDialog[open] .cart-upsell,
+  dialog#cartDialog[open] .checkout-form{
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  dialog#cartDialog[open] .cart-item{
+    grid-template-columns:60px minmax(0,1fr) 86px!important;
+    gap:7px!important;
+  }
+  dialog#cartDialog[open] .cart-item-media{width:60px!important;height:60px!important}
+  dialog#cartDialog[open] .cart-item-info h3{font-size:12px!important}
+  dialog#cartDialog[open] .cart-item-info p{font-size:9px!important}
+  dialog#cartDialog[open] .cart-item-price{font-size:11px!important}
+  dialog#cartDialog[open] .choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+  dialog#cartDialog[open] .choice-card span{min-height:58px!important;padding:9px 6px!important;font-size:10px!important;text-align:center!important}
+  dialog#cartDialog[open] .form-grid.two{grid-template-columns:1fr!important}
+  dialog#cartDialog[open] .checkout-actions{
+    position:static!important;
+    margin:15px 0 0!important;
+    padding:13px 0 2px!important;
+    border-top:1px solid var(--border)!important;
+    background:var(--surface)!important;
+    box-shadow:none!important;
+  }
+  dialog#cartDialog[open] .checkout-actions .primary-button{min-height:50px!important}
+  dialog#cartDialog[open] .microcopy{font-size:9px!important}
+
+  /* Table selection */
+  dialog#tableDialog[open]{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:12px!important;
+    display:grid!important;
+    place-items:end center!important;
+    overflow:hidden!important;
+  }
+  dialog#tableDialog[open]>.simple-modal{
+    width:100%!important;
+    max-width:520px!important;
+    max-height:88dvh!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    border-radius:18px!important;
+  }
+
+  /* Keep every button/input touch friendly without changing the desktop DOM */
+  button,.primary-button,.outline-button{touch-action:manipulation}
+}
+@media(max-width:380px){
+  main{width:calc(100% - 18px)!important}
+  .brand-hero-inner{grid-template-columns:58px minmax(0,1fr) auto!important;gap:8px!important;padding-inline:9px!important}
+  .brand-avatar{width:58px!important;height:58px!important;border-radius:16px!important}
+  .brand-hero h1{font-size:23px!important}
+  .brand-hero .muted{font-size:10px!important}
+  .hero-action{max-width:82px!important;font-size:9px!important;padding-inline:7px!important}
+  .product-card{grid-template-columns:78px minmax(0,1fr)!important}
+  .product-media,.product-media img{width:78px!important;height:88px!important;min-width:78px!important;min-height:88px!important}
+  .product-card h3{font-size:12.5px!important}
+  .product-desc{font-size:9.5px!important}
+  .add-button{width:32px!important;height:32px!important}
+  dialog#cartDialog[open] .choice-grid{grid-template-columns:1fr!important}
+}
