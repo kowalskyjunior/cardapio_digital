@@ -1,4 +1,5 @@
 (function(){
+const css=document.createElement("link");css.rel="stylesheet";css.href="css/admin-mobile-editor.css";document.head.appendChild(css);
 document.addEventListener("DOMContentLoaded",function(){
  const {Data,Utils}=window.CardapioDigital;
  const target=document.getElementById("tab-settings");
