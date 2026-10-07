@@ -1,5 +1,5 @@
-const CACHE_NAME="cardapio-digital-v12";
-const APP_SHELL=["./","./index.html","./admin.html","./manifest.json","./css/base.css","./css/menu.css","./css/mobile-reference.css","./css/admin-mobile-editor.css","./css/admin.css","./js/data.js","./js/utils.js","./js/i18n.js","./js/cart.js","./js/menu.js","./js/mobile-reference.js","./js/admin.js","./js/admin-mobile-editor.js","./assets/icon.svg"];
+const CACHE_NAME="cardapio-digital-v13";
+const APP_SHELL=["./","./index.html","./admin.html","./manifest.json","./css/base.css","./css/menu.css","./css/admin.css","./js/data.js","./js/utils.js","./js/i18n.js","./js/cart.js","./js/menu.js","./js/admin.js","./assets/icon.svg"];
 self.addEventListener("install",event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)));self.skipWaiting()});
 self.addEventListener("activate",event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE_NAME).map(key=>caches.delete(key)))));self.clients.claim()});
 self.addEventListener("fetch",event=>{const req=event.request;if(req.method!=="GET")return;event.respondWith(caches.match(req).then(cached=>{if(cached)return cached;return fetch(req).then(res=>{const copy=res.clone();if(res.ok||res.type==="opaque")caches.open(CACHE_NAME).then(cache=>cache.put(req,copy));return res}).catch(()=>caches.match("./index.html"))}))});
