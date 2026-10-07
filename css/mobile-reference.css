@@ -12,7 +12,7 @@
   .mobile-ref-hero{position:relative;margin-bottom:8px}
   .mobile-ref-cover{height:194px;background:var(--mobile-cover-fallback,#d9d9d9) center/cover no-repeat}
   .mobile-ref-identity{position:relative;margin:-24px 8px 0;padding:48px 12px 14px;background:#fff;border-radius:16px 16px 5px 5px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.05)}
-  .mobile-ref-logo{position:absolute;top:-38px;left:50%;transform:translateX(-50%);width:76px;height:76px;border-radius:50%;border:4px solid #fff;background:var(--mobile-accent,#18b84b);object-fit:cover;box-shadow:0 3px 12px rgba(0,0,0,.16)}
+  .mobile-ref-logo-text{display:grid;place-items:center;color:#fff;font-size:24px;font-weight:900;background:var(--mobile-accent,#18b84b);object-fit:initial}.mobile-ref-logo{position:absolute;top:-38px;left:50%;transform:translateX(-50%);width:76px;height:76px;border-radius:50%;border:4px solid #fff;background:var(--mobile-accent,#18b84b);object-fit:cover;box-shadow:0 3px 12px rgba(0,0,0,.16)}
   .mobile-ref-identity h1{margin:0 0 3px;font-size:20px;line-height:1.15;font-weight:800}
   .mobile-ref-location{margin:0;font-size:9px;line-height:1.4;color:#707070}
   .mobile-ref-more{border:0;background:transparent;color:#5d5d5d;font-size:9px;padding:0;margin-top:2px}
